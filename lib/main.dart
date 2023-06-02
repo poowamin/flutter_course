@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
-        title: 'Namer App',
+        title: 'Named App',
         theme: ThemeData(
           useMaterial3: true,
           colorScheme: ColorScheme.fromSeed(
@@ -58,6 +58,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     Widget page;
@@ -127,40 +128,38 @@ class GeneratorPage extends StatelessWidget {
       icon = Icons.favorite_border;
     }
 
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // const Text('A random AWESOME idea:'),
-            BigCard(pair: pair),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    appState.toggleFavorite();
-                  },
-                  icon: Icon(icon),
-                  label: const Text('Like'),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    appState.getNext();
-                    log('button pressed!');
-                  },
-                  child: const Text('Next'),
-                ),
-              ],
-            ),
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // const Text('A random AWESOME idea:'),
+          BigCard(pair: pair),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () {
+                  appState.toggleFavorite();
+                },
+                icon: Icon(icon),
+                label: const Text('Like'),
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  appState.getNext();
+                  log('button pressed!');
+                },
+                child: const Text('Next'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
